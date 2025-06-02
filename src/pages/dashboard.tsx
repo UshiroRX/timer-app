@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
-
+import { Quote } from "@/components/quote";
 
 const transitionConfig = {
   type: "spring",
@@ -19,7 +19,7 @@ const DashboardPage = () => {
   const [startTime, setStartTime] = useState<number | null>(null);
 
   const handleStart = () => {
-    localStorage.setItem("name", name)
+    localStorage.setItem("name", name);
     const parsedTime = parseInt(timeInput);
     if (!isNaN(parsedTime) && parsedTime > 0) {
       setStartTime(parsedTime);
@@ -36,12 +36,13 @@ const DashboardPage = () => {
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-center bg-white dark:bg-black transition-colors relative">
-      <Link to="/"
+      <Link
+        to="/"
         className="absolute top-4 left-4 text-3xl md:text-4xl hover:scale-110 transition-transform select-none"
         aria-label="На главную"
       >
         ←
-        </Link>
+      </Link>
       <div className="w-full max-w-md flex flex-col items-center gap-10">
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-4xl font-bold text-black dark:text-white tracking-tight">
@@ -92,7 +93,8 @@ const DashboardPage = () => {
               transition={transitionConfig}
               className="flex flex-col items-center gap-6 w-full"
             >
-              <Timer inputTime={startTime} name={name}/>
+              <Timer inputTime={startTime} name={name} />
+              <Quote />
               <Button
                 onClick={handleReset}
                 variant="outline"
